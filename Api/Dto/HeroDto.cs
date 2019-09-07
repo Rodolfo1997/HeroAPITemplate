@@ -7,6 +7,7 @@ namespace Api.Dto
 {
     public class HeroDto
     {
+        public string HeroId { get; set; }
         public string Name { get; set; }
         public string Power { get; set; }
     }

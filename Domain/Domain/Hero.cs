@@ -8,9 +8,9 @@ namespace Domain.Domain
     {
         private IList<string> heroFriend;
 
-        public Hero(string name, string power)
+        public Hero(Guid heroId, string name, string power)
         {
-            HeroId = Guid.NewGuid();
+            HeroId = GetHeroGuid(heroId);
             Name = name;
             Power = power;
             heroFriend = new List<string>();
@@ -31,6 +31,18 @@ namespace Domain.Domain
         public void AddHeroFriend(string hero)
         {
             heroFriend.Add(hero);
+        }
+
+        private Guid GetHeroGuid(Guid heroId)
+        {
+            Guid hero  = heroId;
+
+            if(hero == Guid.Empty)
+            {
+                hero = Guid.NewGuid();
+            }
+
+            return hero;
         }
     }
 }
